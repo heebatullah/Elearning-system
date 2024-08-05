@@ -1,7 +1,7 @@
 # Elearning-system
 ## Introduction
 
-Welcome to eLearning Hub! This is an online platform designed to provide an interactive and personalized learning experience. With a wide range of courses, users can enhance their skills and knowledge through engaging multimedia content, quizzes, and activities.
+Welcome to Elimu Online Hub! This is an online platform designed to provide an interactive and personalized learning experience. With a wide range of courses, users can enhance their skills and knowledge through engaging multimedia content, quizzes, and activities.
 
 ## Project Overview
 

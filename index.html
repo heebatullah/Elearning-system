@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elimu Online</title>
+    <script src="https://kit.fontawesome.com/c954a3f2c7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Default light mode styles */
+        body {
+            background-color: white;
+            color: black;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+    </style>
+</head>
+
+
+<body>
+<div class="about">
+    <div class="nav">
+        <div class="navbar">
+            <img src="images/logo-removebg-preview.png" alt="Elimu Online Logo">
+            
+            <div class="right">
+                <div class="about2">
+                    <a href="" class="list">ABOUT</a>
+                    <br><br>
+                    <div class="hide">
+                        <a href="">Our story & how we work</a>
+                        <br>
+                        <a href="">Methodology and success</a>
+                        <br>
+                        <a href="">Elimu kids</a>
+                        <br>
+                        <a href="">Center of AI</a>
+                        <br>
+                        <a href="">Career</a>
+                        <br>
+                        <a href="">Referral program</a>
+                    </div>
+                </div>
+                <div class="about2">
+                    <a href="" class="list">PATHWAYS</a>
+                    <div class="hide">
+                        <a href="">Software dev</a>
+                        <br>
+                        <a href="">Machine learning</a>
+                        <br>
+                        <a href="">Data science</a>
+                        <br>
+                        <a href="">Block chain</a>
+                        <br>
+                        <a href="">Robotics</a>
+                    </div>
+                </div>
+                <a href="#" class="list">VIRTUAL LEARNING</a>
+                <a href="#" class="list">UPDATES</a>
+                <a href="#" class="list">CONTACTS</a>
+            </div>
+            <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
+            <button>Apply</button>
+        </div>
+        <div class="main">
+            <h1>Define your future</h1>
+            <br><br>
+            <p>School of Software Engineering & Artificial Intelligence</p>
+            <br><br>
+            <button id="submit">BUILD YOUR STARTUP</button>
+            <br>
+            <button id="toggle-mode">Switch Dark/Light Mode</button>
+        </div>
+    </div>
+
+    <div class="main2">
+        <div class="text1">
+            <span style="color: crimson; font-size: 13px;">WELCOME TO ELIMU ONLINE PROGRAM</span>
+            <br><br>
+            <h1>Developing the capacity to innovate.</h1>
+            <p>We are a Premier Disruptive Online School of Artificial Intelligence, Software Engineering, Data Science, Robotics, and Blockchain.
+                <br><br>
+                Imagine an Online school where you graduate with your startup business and not only some worthless certificates. Built for those who want to innovate, those who think differently and those who want to defy the status quo.
+                <br><br>
+                We are fun, inventive, and artistic, obsessed with outcomes, and welcoming to anyone who has a dream.
+            </p>
+            <br><br>
+            <button>METHODOLOGY & SUCCESS</button>
+        </div>
+        
+        <div class="text2">
+            <div class="example">
+                <div class="choice1">
+                    <h2>Graduate with your startup</h2>
+                    <p>Students learn with the focus of building and launching their startups to market at the end of their program. We don’t offer job placements.</p>
+                </div>
+                <div class="choice2">
+                    <p><i class="fa-solid fa-layer-group" style="color: #ffffff;"></i></p>
+                    <h2>Project-based Learning</h2>
+                    <p>Our unique curriculum is based on the Project-based Learning methodology. Students identify what they need to build/work on and we deliver through supported work.</p>
+                </div>
+            </div>
+
+            <div class="example2">
+                <div class="choice3">
+                    <p><i class="fa-solid fa-chess-knight" style="color: #fcfcfc;"></i></p>
+                    <h2>Learn from top minds</h2>
+                    <p>Our curriculum is delivered by active industry thought leaders such as Reinhard & others. The opportunity to be coached by accomplished engineers is rare.</p>
+                </div>
+                <div class="choice4">
+                    <p><i class="fa-solid fa-shield" style="color: #ffffff;"></i></p>
+                    <h2>Peer Learning</h2>
+                    <p>Learn by doing. Learn from each other. Always asking “why,” we constantly question the status quo. By challenging ourselves and one another, we’re building a new kind of community.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main3">
+        <div class="sec1">
+            <a href="#"><img src="images/left.jpg" alt="Video Thumbnail" style="width: 100%;"></a>
+        </div>
+        <div class="sec2">
+            <h1>Do you think you belong here?</h1>
+            <p>Over the past 100 years, many areas in life have been revolutionized but education is not one of them. Historically, higher education has avoided competitive disruption. One reason for this past immunity is the power of prestige in the higher education marketplace, where the quality of the product is hard to measure. At this Online school our focus is to graduate all students innovation ready, ready to solve problems creatively.</p>
+            <button id="submit1">ENROLL TODAY</button>
+        </div>
+    </div>
+
+    <div class="main4">
+        <div class="head">
+            <p>OUR PROGRAMS</p>
+            <h1>Pathways</h1>
+        </div>
+        
+       
+       <!-- javasript application -->
+       
+        <header style="margin-left: 100px;">
+            <input type="text" id="search" placeholder="Search programs..." style="padding:0ch; border-color: crimson; border-radius: 30px; width: 300px;height: 30px;">
+        </header>
+        <form id="special-request-form" style="display:flex; justify-content: space-around; margin-top: 35px; margin-left: 40px;">
+            <input type="text" id="special-request-name" placeholder="Program Name" required style="padding:0ch; border-color: crimson; border-radius: 30px; width: 300px;height: 30px;">
+            <input type="text" id="special-request-category" placeholder="Category" required style="padding:0ch; border-color: crimson; border-radius: 30px; width: 300px;height: 30px;">
+            <textarea id="special-request-description" placeholder="Description" required style="border-color: crimson;"></textarea>
+            <button type="submit" style="border-radius: 30px; background-color: crimson; color: #ffffff; width:160px; height:30px;">Submit desired program</button>
+        </form>
+        <div id="message" style="display:none;">Request submitted successfully!</div>
+        <br>
+        <br>
+
+        <div class="div1" style="margin-top: 60px;">
+            <!-- Programs will be dynamically inserted here -->
+        </div>
+        <div class="div2" style="margin-top: 40px;">
+            <!-- Programs will be dynamically inserted here -->
+        </div>
+        
+        <div id="program-details">
+            <h2 id="program-name"></h2>
+            <!-- <img id="program-image" src="" alt="Program Image"> -->
+            <p id="program-category"></p>
+            <p id="program-description"></p>
+            <p id="program-info"></p>
+    
+        </div>
+    </div>
+ <!-- end -->
+
+
+
+    <div class="main5">
+        <div class="side1">
+            <img src="images/main2.jpg" alt="How we work image">
+        </div>
+        <div class="side2">
+            <h1>How we work.</h1>
+            <div class="first">
+                <div class="adm">
+                    <h3>01. Admissions</h3>
+                    <br>
+                    <p>After online appreciation, our admissions team will contact you to schedule a personal interview so that we can make sure we can help you meet your goals.</p>
+                </div>
+                <div class="teaching">
+                    <h3>02. Method of Teaching</h3>
+                    <br>
+                    <p>We use project-based learning to deliver our curriculum. Students and the tutor will identify a unique problem and learn by building or working on it.</p>
+                </div>
+            </div>
+            <div class="second">
+                <div class="classes">
+                    <h3>03. Classes</h3>
+                    <br>
+                    <p>All our classes run for 4 hours a day (9am- 1pm) except robotics that runs full-time (9am - 5pm). Virtual classes' short courses run for 2 hours a day.</p>
+                </div>
+                <div class="success">
+                    <h3>04. How do we measure success?</h3>
+                    <br>
+                    <p>Elimu Online is not a coding school; it’s a startup school. We measure success by students' ability to build a product and launch to market within a given timeline.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main6">
+        <div class="main7">
+            <a href="#"><i class="fa-solid fa-play" style="color: #ffffff;"></i></a>
+            <br>
+            <h1>If you know how to read, you can learn how to code</h1>
+        </div>
+        
+        <div class="note">
+            <div class="note1">
+                <h1>01</h1>
+                <br>
+                <h3>It's not just about software</h3>
+                <br>
+                <p>Discovering new worlds. Giving a voice to the disenfranchised. Saving the environment. Connecting people across the globe. Being a software developer isn't just about coding — it's about making our communities better for everyone.</p>
+            </div>
+            <div class="note2">
+                <h1>02</h1>
+                <br>
+                <h3>Learn how to start a company</h3>
+                <br>
+                <p>Our model is built around enabling students to learn the necessary skills they need to build a startup and launch to market before graduating. This is an amazing process where you will be taught everything you may need to start and run a successful startup.</p>
+            </div>
+            <div class="note3">
+                <h1>03</h1>
+                <br>
+                <h3>Learn the soft skills that matter</h3>
+                <br>
+                <p>Our project-based learning environment leads you to work effectively in groups, articulate ideas, speak in front of audiences, and think outside of the box — all skills that will ensure your success as an engineer and on your journey to build something great.</p>
+            </div>
+        </div>
+        
+        <div class="main8">
+            <h2>Let's build something great together</h2>
+            <button id="submit2">GET STARTED TODAY</button>
+        </div>
+    </div>
+
+    <div class="trial2">
+        <div class="socials">
+            <img src="images/logo.jpg" alt="Elimu Online Logo" style="width:30%;">
+            <br><br>
+            <p>We are a Premium school of Software Engineering, Artificial Intelligence, Data Science, Robotics & Blockchain.</p>
+            <br>
+            <p>
+                <i class="fa-brands fa-facebook" style="color: #9a9b9e;"></i>
+                <i class="fa-brands fa-instagram" style="color: #a7a8a9;"></i>
+                <i class="fa-brands fa-twitter" style="color: #a0a0a2;"></i>
+                <i class="fa-brands fa-square-snapchat" style="color: #a4a5a8;"></i>
+            </p>
+        </div>
+        <div class="info">
+            <h2>INFORMATION</h2>
+            <br>
+            <a href="">Students portal</a>
+            <br>
+            <a href="">Virtual learning</a>
+            <br>
+            <a href="">Elimu kids</a>
+            <br>
+            <a href="">Career</a>
+            <br>
+            <a href="">Referral program</a>
+        </div>
+        <div class="contact">
+            <h2>CONTACT INFO</h2>
+            <br>
+            <p>Elimu Online</p>
+            <p>Nairobi, Kenya</p>
+            <p>Email: admissions@Elimuonline.com</p>
+            <p>Phone: (+254)727 634 101</p> 
+        </div>
+        <div class="portfolio">
+            <h2>INSTAGRAM PORTFOLIO</h2>
+            <br>
+        </div>
+    </div>
+
+    <div class="end">
+        <p>© 2022 Elimu Online. All rights reserved.</p>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

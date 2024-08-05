@@ -1,0 +1,66 @@
+{
+  "programs": [
+    {
+      "id": "1",
+      "name": "Software Development",
+      "category": "Technology",
+      "image": "images/main10.jpg",
+      "description": "Web Dev, Mobile App Dev, Full Stack Dev etc.",
+      "link": "#",
+      "info": "This program covers HTML, CSS, JavaScript, and frameworks such as React and Node.js. Students will build real-world projects and collaborate with peers to develop a comprehensive understanding of the development lifecycle. By the end of the course, you'll be able to create dynamic web applications from scratch"
+    },
+    {
+      "id": "2",
+      "name": "Machine Learning",
+      "category": "Technology",
+      "image": "images/main4.jpg",
+      "description": "AI, Data Analysis, Predictive Modeling etc.",
+      "link": "#",
+      "info": "This course delves into supervised and unsupervised learning, neural networks, and deep learning. You'll work on hands-on projects, utilizing popular libraries such as TensorFlow and scikit-learn. By the end of this program, you'll be equipped to tackle complex data problems and create predictive models."
+    },
+    {
+      "id": "3",
+      "name": "Data Science",
+      "category": "Technology",
+      "image": "images/main11.jpg",
+      "description": "Big Data, Data Visualization, Statistics etc.",
+      "link": "#",
+      "info": "This program covers Python for data analysis, SQL, data visualization tools like Tableau, and big data technologies such as Hadoop and Spark. You'll work on real-world datasets to uncover insights and learn how to present your findings effectively. By the end of the course, you'll be ready to take on roles in data analysis and business intelligence."
+    },
+    {
+      "id": "4",
+      "name": "Blockchain",
+      "category": "Technology",
+      "image": "images/blockchain.jpg",
+      "description": "Cryptocurrency, Smart Contracts, DApps etc.",
+      "link": "#",
+      "info": "This course covers blockchain basics, smart contracts, and the development of decentralized applications (dApps). You'll explore popular blockchain platforms like Ethereum and Hyperledger. By the end of this program, you'll have a solid understanding of how blockchain can be used to solve real-world problems."
+    },
+    {
+      "id": "5",
+      "name": "Robotics",
+      "category": "Technology",
+      "image": "images/robotics.jpg",
+      "description": "AI, Machine Learning, Automation etc.",
+      "link": "#",
+      "info": "This program includes an introduction to robotics, sensors, actuators, and microcontrollers. You'll work on projects involving robot design, programming with ROS (Robot Operating System), and autonomous navigation. By the end of the course, you'll have the skills to create and program your own robotic systems."
+    },
+    {
+      "id": "6",
+      "name": "cyber Security",
+      "category": "security",
+      "image": "images/main1.jpg",
+      "description": "Learn to protect systems and networks from cyber threats.",
+      "link": "#",
+      "info": "This program covers the fundamentals of cyber security, including network security, cryptography, and ethical hacking. You'll work on projects that simulate real-world security challenges and learn how to defend against various cyber attacks. By the end of the course, you'll be prepared to secure digital assets and manage security operations."
+    }
+  ],
+  "desiredprogram": [
+    {
+      "id": "e7d2",
+      "name": "Web development",
+      "category": "technology",
+      "description": "30 day course"
+    }
+  ]
+}

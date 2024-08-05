@@ -1,113 +1,107 @@
-// Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
+    // Event listeners for various elements
     document.querySelector('.fa-bars').addEventListener('click', toggleMenu);
     document.querySelector('#toggle-mode').addEventListener('click', toggleMode);
     document.querySelector('#submit').addEventListener('click', handleSubmit);
-    
-});
+    document.querySelector('#submit1').addEventListener('click', handleApplyClick);
 
-// Function to toggle the menu
-function toggleMenu() {
-    const nav = document.querySelector('.navbar .right');
-    nav.style.display = nav.style.display === 'block' ? 'none' : 'none';
-}
 
-// Function to toggle dark and light modes
-function toggleMode() {
-    document.body.classList.toggle('dark-mode');
-}
+    // Function to toggle the menu
+    function toggleMenu() {
+        const nav = document.querySelector('.navbar .right');
+        nav.style.display = nav.style.display === 'block' ? 'none' : 'none';
+    }
 
-// Function to handle form submission or button click
-document.addEventListener("DOMContentLoaded", function() {
-    const button1 = document.querySelector('#submit');
+    // Function to toggle dark and light modes
+    function toggleMode() {
+        document.body.classList.toggle('dark-mode');
+    }
 
+    // Handle form submission (for placeholder purposes)
     function handleSubmit(event) {
         event.preventDefault();
         alert('Form Submitted or Button Clicked!');
     }
 
-    if (button1) {
-        button1.addEventListener('click', handleSubmit);
+    // Handle apply button click
+    function handleApplyClick(event) {
+        event.preventDefault();
+        const button = event.target;
+        const programId = button.dataset.id;
+
+        button.textContent = 'Pending';
+        button.style.backgroundColor = 'green';
+        button.style.color = 'white';
+        
+        // Simulate a delay to show the change
+        setTimeout(() => {
+            button.textContent = 'ENROLLED!';
+            button.style.backgroundColor = '';
+            button.style.color = '';
+            enrollInProgram(programId);
+        }, 4000);
     }
-});
-
-
-// Function to handle button click to show pending process
-document.addEventListener("DOMContentLoaded", function() {
-    const button = document.querySelector('#submit1');
-
-
-function handleSubmit(event) {
-    event.preventDefault();
-    button.textContent = 'Pending';
-    button.style.backgroundColor = 'green';
-    button.style.color = 'white';
     
-    // Simulating a delay to show the change
-    setTimeout(() => {
-        button.textContent = 'ENROLL TODAY';
-        button.style.backgroundColor = '';
-        button.style.color = '';
-    }, 4000);
-}
-
-if (button) {
-    button.addEventListener('click', handleSubmit);
-}
-
-});
-
-
-// Function to handle button click to show pending process
-document.addEventListener("DOMContentLoaded", function() {
-    const button2 = document.querySelector('#submit2');
-
-
-function handleSubmit(event) {
-    event.preventDefault();
-    button2.textContent = 'Send us an email';
-    button2.style.backgroundColor = 'blue';
-    button2.style.color = 'white';
     
-    // Simulating a delay to show the change
-    setTimeout(() => {
-        button2.textContent = 'ENROLL TODAY';
-        button2.style.backgroundColor = '';
-        button2.style.color = '';
-    }, 4000);
-}
 
-if (button2) {
-    button2.addEventListener('click', handleSubmit);
-}
+    // Enroll in the selected program
+    function enrollInProgram(programId) {
+        fetch(`http://localhost:3000/programs/${programId}`)
+            .then(response => response.json())
+            .then(program => {
+                const remainingSlots = program.capacity - program.enrolled_students;
 
-});
+                if (remainingSlots > 0) {
+                    const updatedProgram = {
+                        ...program,
+                        enrolled_students: program.enrolled_students + 1
+                    };
 
+                    fetch(`http://localhost:3000/programs/${programId}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(updatedProgram)
+                    })
+                    .then(response => response.json())
+                    .then(updatedProgram => {
+                        updateRemainingSlots(programId, updatedProgram);
+                    })
+                    .catch(error => console.error('Error updating program:', error));
+                } else {
+                    alert('No remaining slots available for this program.');
+                }
+            })
+            .catch(error => console.error('Error fetching program details:', error));
+    }
 
+    // Update the remaining slots on the UI
+    function updateRemainingSlots(programId, updatedProgram) {
+        const programDiv = document.querySelector(`.program[data-id="${programId}"]`);
+        if (programDiv) {
+            const remainingSlots = updatedProgram.capacity - updatedProgram.enrolled_students;
+            programDiv.querySelector('.remaining-slots').textContent = `Remaining Slots: ${remainingSlots}`;
+        }
+    }
 
-
-// DOM manipulation and Server communication
-
-document.addEventListener("DOMContentLoaded", function() {
-    const searchInput = document.getElementById("search");
-    const div1 = document.querySelector(".div1");
-    const div2 = document.querySelector(".div2");
-    const programDetails = document.getElementById("program-details");
-    const specialRequestForm = document.getElementById("special-request-form");
-    const message = document.getElementById("message");
-
-    // Function to display programs on the page
+    // Display programs on the page
     function displayPrograms(programs) {
-        div1.innerHTML = "";
-        div2.innerHTML = "";
+        const div1 = document.querySelector('.div1');
+        const div2 = document.querySelector('.div2');
+        div1.innerHTML = '';
+        div2.innerHTML = '';
+
         programs.forEach((program, index) => {
-            const programDiv = document.createElement("div");
-            programDiv.classList.add(`path${index + 1}`);
+            const programDiv = document.createElement('div');
+            programDiv.classList.add('program');
+            programDiv.dataset.id = program.id;
             programDiv.innerHTML = `
-                <a href="#" class="program" data-id="${program.id}"><img src="${program.image}" alt="${program.name}"></a>
+                <a href="#" class="program-link" data-id="${program.id}"><img src="${program.image}" alt="${program.name}"></a>
                 <h2>${program.name}</h2>
                 <p>${program.category}</p>
-                <button>Apply</button>
+                <p class="remaining-slots">Remaining Slots: ${program.capacity - program.enrolled_students}</p>
+                <button class="apply-button" data-id="${program.id}">Apply</button>
             `;
             if (index < 3) {
                 div1.appendChild(programDiv);
@@ -116,31 +110,38 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        // Add click event listeners to program links
-        document.querySelectorAll(".program").forEach(item => {
-            item.addEventListener("click", function(event) {
+        // Add click event listeners to program links and apply buttons
+        document.querySelectorAll('.program-link').forEach(item => {
+            item.addEventListener('click', function(event) {
                 event.preventDefault();
-                const id = this.getAttribute("data-id");
+                const id = this.getAttribute('data-id');
                 const program = programs.find(p => p.id == id);
                 displayProgramDetails(program);
             });
         });
+
+        document.querySelectorAll('.apply-button').forEach(button => {
+            button.addEventListener('click', handleApplyClick);
+        });
     }
 
-    // Function to display details of a selected program
+    // Display program details in section
     function displayProgramDetails(program) {
-        programDetails.style.display = "block";
-        programDetails.querySelector("#program-name").textContent = program.name;
-        programDetails.querySelector("#program-category").textContent = program.category;
-        programDetails.querySelector("#program-description").textContent = program.description;
-        programDetails.querySelector("#program-info").textContent = program.info;
+        const programDetails = document.getElementById('program-details');
+        programDetails.style.display = 'block';
+        programDetails.querySelector('#program-name').textContent = program.name;
+        programDetails.querySelector('#program-category').textContent = program.category;
+        programDetails.querySelector('#program-description').textContent = program.description;
+        programDetails.querySelector('#program-info').textContent = program.info;
+        
     }
 
-    // Handle search input for filtering programs
-    searchInput.addEventListener("input", function() {
+    // Handle search functionality
+    const searchInput = document.getElementById('search');
+    searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
         fetchPrograms().then(programs => {
-            const filteredPrograms = programs.filter(program => 
+            const filteredPrograms = programs.filter(program =>
                 program.name.toLowerCase().includes(searchTerm) ||
                 program.category.toLowerCase().includes(searchTerm) ||
                 program.description.toLowerCase().includes(searchTerm)
@@ -149,18 +150,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Function to handle special request form submission
-
-    specialRequestForm.addEventListener("submit", function(event) {
+    // Handle special request form submission
+    const specialRequestForm = document.getElementById('special-request-form');
+    specialRequestForm.addEventListener('submit', function(event) {
         event.preventDefault();
+        handleSpecialRequestSubmit();
     });
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        
-        const name = document.getElementById("special-request-name").value;
-        const category = document.getElementById("special-request-category").value;
-        const description = document.getElementById("special-request-description").value;
+    function handleSpecialRequestSubmit() {
+        const name = document.getElementById('special-request-name').value;
+        const category = document.getElementById('special-request-category').value;
+        const description = document.getElementById('special-request-description').value;
     
         const newProgram = {
             name,
@@ -177,9 +177,9 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(response => response.json())
         .then(data => {
-            message.style.display = "block";
+            document.getElementById('message').style.display = 'block';
             setTimeout(() => {
-                message.style.display = "none";
+                document.getElementById('message').style.display = 'none';
             }, 2000);
             console.log('Desired request submitted:', data);
             specialRequestForm.reset();
@@ -188,26 +188,14 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error submitting desired request:', error);
         });
     }
-    
-    searchInput.addEventListener("input", function() {
-        const searchTerm = this.value.toLowerCase();
-        searchPrograms(searchTerm);
-    });
-    
-    specialRequestForm.addEventListener("submit", handleSubmit);
 
-
-
-    // Function to fetch programs from the server
+    // Fetch and display programs initially
     function fetchPrograms() {
         return fetch('http://localhost:3000/programs')
             .then(response => response.json())
-            .catch(error => {
-                console.error('Error fetching programs:', error);
-            });
+            .catch(error => console.error('Error fetching programs:', error));
     }
 
-    // Initial fetch and display of programs
     fetchPrograms().then(programs => {
         displayPrograms(programs);
     });
